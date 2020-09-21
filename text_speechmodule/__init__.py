@@ -1,1 +1,2 @@
-__all__ = ['speechtotext']
+from text_speechmodule.speechtotext import *
+from text_speechmodule.texttospeech import *
