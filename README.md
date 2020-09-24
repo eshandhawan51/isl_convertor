@@ -6,4 +6,6 @@ Dependencies required :
 - pip install pyaudio
 - pip install speech_recognition
 - pip install pyttsx3
+- pip install numpy
+- pip install opencv-python
 
