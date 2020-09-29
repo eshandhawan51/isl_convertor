@@ -3,6 +3,9 @@ This repo is for minor project 1 odd sem 2020
 
 Dependencies required :
 
-pip install pyaudio
-pip install speech_recognition
+- pip install pyaudio
+- pip install speech_recognition
+- pip install pyttsx3
+- pip install numpy
+- pip install opencv-python
 
