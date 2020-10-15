@@ -1,3 +1,4 @@
+"""
 from text_speechmodule import speechtotext
 from speechtotext import speechtotext as st
 
@@ -11,4 +12,4 @@ class speechtosign:
         # storing alphabets paths
     def show(self):
         
-
+"""
