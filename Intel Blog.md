@@ -4,7 +4,11 @@ Our main goal is to recognize the hand detection of Deaf and Mute whether they l
 ### Overview / Usage
 
 Verbal Communication is the only way using which people have interacted with each other over the years but the case stands different for the disabled. The barrier created between the impaired and the normal people is one of the setbacks of the society. For impaired people (deaf & mute), sign language is the only way to communicate. In order to help the deaf and mute communicate efficiently with normal people, an effective solution has been devised. Our aim is to design a system that analyses and recognizes various alphabets from a database of sign images. In order to accomplish this, the application uses various techniques of Image Processing such as segmentation & feature extraction. We investigate different machine learning techniques like SVM, KNN, CNN for the detection of sign language. We are utilizing datasets available online, each alphabet has almost 60,000 datasets. Given the large availability of the dataset, we can produce a fully generalizable translator for all Indian Standard Language (ISL). This system will help to eradicate the barrier between the deaf-mute & normal people. This system will standardize the Indian Sign Language in India. It will also improve the quality of teaching and learning in deaf and mute institutes. Just as Hindi is recognized as the standard language for conversation throughout India, ISL will be recognized as the standard sign language throughout India. The main aim of this work is serving mankind that is achieved by providing better teaching and better learning.
-Methodology / Approach
+Methodology / Approach  
+
+### Proposed Model  
+
+![Proposed Model](./model.png)
 
 ### Image Acquisition
 
