@@ -9,3 +9,7 @@ Dependencies required :
 - pip install numpy
 - pip install opencv-python
 
+
+For linux systems install portaudio dev as well
+
+Ubuntu 18.04 : sudo apt-get install portaudio19-dev
