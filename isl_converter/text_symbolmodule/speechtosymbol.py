@@ -40,7 +40,7 @@ class speechtosign:
         for i in self.words :
             frames=[]
             if i in self.gif_list :
-                path=os.getcwd()+"/data/animated_symbols/"+i+".gif"
+                path=os.getcwd()+"isl_converter/text_symbolmodule/data/animated_symbols/"+i+".gif"
                 try :
                     gif=im.open(path,"r")
                 except IOError :
@@ -59,7 +59,7 @@ class speechtosign:
             else :
                 for j in i.upper() :
                     try:
-                        path = os.getcwd()+"/data/animated_symbols/"+j+".jpg"
+                        path=os.getcwd()+"isl_converter/text_symbolmodule/data/animated_symbols/"+j+".jpg"
                         test_image=im.open(path)
                         print (test_image)
                         plt.imshow(test_image)
