@@ -2,6 +2,7 @@ from isl_converter.text_speechmodule.speechtotext import *
 from PIL import Image as im
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 __all__ = ['speechtosign']
 
 class speechtosign:
@@ -39,7 +40,7 @@ class speechtosign:
         for i in self.words :
             frames=[]
             if i in self.gif_list :
-                path="/home/nolife/projects/isl_convertor/isl_converter/text_symbolmodule/data/animated_symbols/"+i+".gif"
+                path=os.getcwd()+"/data/animated_symbols/"+i+".gif"
                 try :
                     gif=im.open(path,"r")
                 except IOError :
@@ -58,7 +59,7 @@ class speechtosign:
             else :
                 for j in i.upper() :
                     try:
-                        path = "/home/nolife/projects/isl_convertor/isl_converter/text_symbolmodule/data/animated_symbols/"+j+".jpg"
+                        path = os.getcwd()+"/data/animated_symbols/"+j+".jpg"
                         test_image=im.open(path)
                         print (test_image)
                         plt.imshow(test_image)
