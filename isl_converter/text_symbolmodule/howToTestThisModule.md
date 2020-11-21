@@ -1,5 +1,6 @@
 ## How to test text_symbolmodule module
-```cd ../..```
+```cd ../..```  
+
 Open Terminal/Command Prompt ```$ python3``` **Python Terminal**  
 
 ```>>> from isl_converter import *```  
