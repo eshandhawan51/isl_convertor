@@ -42,14 +42,17 @@ class speechtosign:
             if i in self.gif_list :
                 path=os.getcwd()+"/isl_converter/text_symbolmodule/data/animated_symbols/"+i+".gif"
                 try :
-                    gif=im.open(path,"r")
+                    gif=im.open(path,"r") 
+                    f = 1
                 except IOError :
                     print("file not found")
+                    f = 0
 
                 try:
                     while 1:
-                        frames.append(gif.copy())
-                        gif.seek(len(frames))
+                        if f == 1 :
+                            frames.append(gif.copy())
+                            gif.seek(len(frames))
                 except EOFError :
                     pass
                 for k in frames :

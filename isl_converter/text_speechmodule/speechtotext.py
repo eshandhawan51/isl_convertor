@@ -20,4 +20,4 @@ class speechtotext:
                 textoutput=self.recognizer.recognize_google(audio)
                 return(textoutput)
             except:
-                return(textoutput)
+                return("error")
