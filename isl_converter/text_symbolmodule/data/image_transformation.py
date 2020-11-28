@@ -171,6 +171,6 @@ def apply_image_transformation(frame):
     frame = make_skin_white(frame)
     frame = remove_arm(frame)
     frame, contour_dimensions = draw_contours(frame)
-    #frame = centre_frame(frame, contour_dimensions)
+    frame = centre_frame(frame, contour_dimensions)
     frame = resize_image(frame, 30)
     return frame
