@@ -6,6 +6,7 @@ def resize_image(frame, new_size):
     #print("Resizing image to {}...".format(new_size))
 
     frame = cv2.resize(frame,(new_size,new_size))
+    
     #print("Done!")
     return frame
 
@@ -45,6 +46,7 @@ def make_background_black(frame):
     frame_skin = cv2.bitwise_and(frame, frame, mask=skin_mask)
 
     #print("Done!")
+    
     return frame_skin
 
 
@@ -74,6 +76,7 @@ def make_skin_white(frame):
                 frame[i][j] = 0
 
     #print("Done!")
+    cv2.imshow("resize",frame)
     return frame
 
 
@@ -118,7 +121,7 @@ def draw_contours(frame):
     #print("Drawing contour around white color...")
 
     # 'contours' is a list of contours found.
-    _, contours, _ = cv2.findContours(frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     # Finding the contour with the greatest area.
     largest_contour_index = find_largest_contour_index(contours)
@@ -168,6 +171,6 @@ def apply_image_transformation(frame):
     frame = make_skin_white(frame)
     frame = remove_arm(frame)
     frame, contour_dimensions = draw_contours(frame)
-    frame = centre_frame(frame, contour_dimensions)
+    #frame = centre_frame(frame, contour_dimensions)
     frame = resize_image(frame, 30)
     return frame
