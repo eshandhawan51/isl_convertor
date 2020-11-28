@@ -76,7 +76,7 @@ def make_skin_white(frame):
                 frame[i][j] = 0
 
     #print("Done!")
-    cv2.imshow("resize",frame)
+   
     return frame
 
 
