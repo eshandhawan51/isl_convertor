@@ -12,6 +12,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.utils import shuffle
 from sklearn import preprocessing
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 import warnings
 
 import pickle
@@ -70,16 +71,24 @@ def model_train():
         stat_file.write("model used {} classifier".format(i))
         stat_file.write("model details : \n \n {} \n".format(model))
         x_train,y_train=generate_data("train.csv")
+        x_train,x_test,y_train,y_test = train_test_split(x_train,y_train,test_size=0.2,random_state=0)
         print("training {} model \n".format(i))
         model = model.fit(x_train,y_train)
         print("done training {} model \n".format(i))
-        x_test,y_test = generate_data("test.csv")
-        
+       
         score = model.score(x_test,y_test)
-        stat_file.write("{} model score \n \n {} \n".format(i,score))
+        stat_file.write("{} model score from test train split data  \n \n {} \n".format(i,score))
         predict = model.predict(x_test)
         report = metrics.classification_report(y_test,predict)
         stat_file.write("Classification report : \n {} \n\n".format(report))
+
+        x_test,y_test = generate_data("test.csv")
+        score = model.score(x_test,y_test)
+        stat_file.write("{} model score from External data  \n \n {} \n".format(i,score))
+        predict = model.predict(x_test)
+        report = metrics.classification_report(y_test,predict)
+        stat_file.write("Classification report : \n {} \n\n".format(report))
+
         print("{} model done ".format(i))
         save_model(model,i)
     print ("finished training")
