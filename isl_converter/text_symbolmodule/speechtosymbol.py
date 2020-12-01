@@ -2,6 +2,7 @@ from isl_converter.text_speechmodule.speechtotext import *
 from PIL import Image as im
 import matplotlib.pyplot as plt
 import numpy as np
+import warnings
 import os
 __all__ = ['speechtosign']
 
@@ -9,6 +10,7 @@ class speechtosign:
     def __init__(self):
         #creating the object of the the speech to text module
         self.convert = speechtotext()
+        warnings.filterwarnings('error')
         self.gif_list = ['all the best', 'any questions', 'are you angry', 'are you busy', 'are you hungry', 'are you sick', 'be careful',
                 'can we meet tomorrow', 'did you book tickets', 'did you finish homework', 'do you go to office', 'do you have money',
                 'do you want something to drink', 'do you want tea or coffee', 'do you watch TV', 'dont worry', 'flower is beautiful',
@@ -32,6 +34,7 @@ class speechtosign:
         self.alphabets = ['q','w','e','r','t','y','u','i','o','p','l','k','j','h','g','f','d','s','a','m','n','b','v','c','x','z']
     def converttosign(self):
         # storing alphabets paths
+        warnings.filterwarnings('ignore')
         self.text=self.convert.input_speech()
         self.text = self.text.lower()
         print ("you said"+ self.text)
@@ -44,7 +47,7 @@ class speechtosign:
                 try :
                     gif=im.open(path,"r") 
                     f = 1
-                except IOError :
+                except Exception :
                     print("file not found")
                     f = 0
 
@@ -53,51 +56,20 @@ class speechtosign:
                         if f == 1 :
                             frames.append(gif.copy())
                             gif.seek(len(frames))
-                except EOFError :
+                except Exception :
                     pass
                 for k in frames :
-                    print(k)
+                    #print(k)
                     plt.imshow(k)
-                    plt.pause(0.1)
+                    plt.pause(0.016)
             else :
                 for j in i.upper() :
                     try:
                         path=os.getcwd()+"/isl_converter/text_symbolmodule/data/animated_symbols/"+j+".jpg"
                         test_image=im.open(path)
-                        print (test_image)
+                        #print (test_image)
                         plt.imshow(test_image)
                         plt.pause(0.8)
-                    except IOError:
+                    except Exception:
                         print ("image not found")
         plt.close()
-            
-            
-
-
-"""
-from PIL import Image as im 
-import matplotlib.pyplot as plt
-import numpy as np
-gif=im.open("./data/animated_symbols/address.gif","r")
-frames = []
-try:
-    while 1:
-        frames.append(gif.copy())
-        gif.seek(len(frames))
-except EOFError :
-    pass
-for i in frames :
-    print(i)
-    plt.imshow(i)
-    plt.pause(.1)
-for i in "ABCD":
-    try:
-        path = "./data/animated_symbols/"+i+".jpg"
-        test_image=im.open(path)
-    except IOError:
-        print ("image not found")
-    print (test_image)
-    plt.imshow(test_image)
-    plt.pause(0.8)
-
-"""        

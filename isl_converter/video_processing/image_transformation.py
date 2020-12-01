@@ -76,7 +76,7 @@ def make_skin_white(frame):
                 frame[i][j] = 0
 
     #print("Done!")
-    cv2.imshow("resize",frame)
+   
     return frame
 
 
@@ -106,12 +106,14 @@ def find_largest_contour_index(contours):
     largest_contour_index = 0
 
     contour_iterator = 1
+    second_largest_coutour_index = 1
     while contour_iterator < len(contours):
         if cv2.contourArea(contours[contour_iterator]) > cv2.contourArea(contours[largest_contour_index]):
+            second_largest_coutour_index = largest_contour_index
             largest_contour_index = contour_iterator
         contour_iterator += 1
 
-    return largest_contour_index
+    return largest_contour_index,second_largest_coutour_index
 
 
 def draw_contours(frame):
@@ -124,18 +126,21 @@ def draw_contours(frame):
     contours, _ = cv2.findContours(frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     # Finding the contour with the greatest area.
-    largest_contour_index = find_largest_contour_index(contours)
+    largest_contour_index,second_largest_coutour_index = find_largest_contour_index(contours)
 
     # Draw the largest contour in the image.
     cv2.drawContours(frame, contours,
                      largest_contour_index, (255, 255, 255), thickness=-1)
+    cv2.drawContours(frame, contours,
+                     second_largest_contour_index, (255, 255, 255), thickness=-1)
 
     # Draw a rectangle around the contour perimeter
-    contour_dimensions = cv2.boundingRect(contours[largest_contour_index])
+    #contour_dimensions = cv2.boundingRect(contours[largest_contour_index])
     # cv2.rectangle(sign_image,(x,y),(x+w,y+h),(255,255,255),0,8)
 
     #print("Done!")
     return (frame, contour_dimensions)
+
 
 
 def centre_frame(frame, contour_dimensions):
@@ -164,13 +169,23 @@ def centre_frame(frame, contour_dimensions):
     return frame
 
 
-def apply_image_transformation(frame):
-    # Downsize it to reduce processing time.
-    frame = resize_image(frame, 100)
-    frame = make_background_black(frame)
-    frame = make_skin_white(frame)
-    frame = remove_arm(frame)
-    frame, contour_dimensions = draw_contours(frame)
-    frame = centre_frame(frame, contour_dimensions)
-    frame = resize_image(frame, 30)
+def apply_image_transformation(frame,val):
+    if (val == 1):
+        # Downsize it to reduce processing time.
+        frame = resize_image(frame, 100)
+        #frame = make_background_black(frame)
+        # frame = make_skin_white(frame)
+        frame = remove_arm(frame)
+        # frame, contour_dimensions = draw_contours(frame)
+        # frame = centre_frame(frame, contour_dimensions)
+        #frame = resize_image(frame, 30)
+    else :
+         # Downsize it to reduce processing time.
+        frame = resize_image(frame, 100)
+        #frame = make_background_black(frame)
+        frame = make_skin_white(frame)
+        frame = remove_arm(frame)
+        # frame, contour_dimensions = draw_contours(frame)
+        # frame = centre_frame(frame, contour_dimensions)
+        #frame = resize_image(frame, 30)
     return frame
