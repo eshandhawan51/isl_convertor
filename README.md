@@ -1,4 +1,8 @@
 # isl_convertor
+
+## This Repository contains many blogs and State of Arts from various source
+## We have tried to mention all sources and credits to the authors 
+## In case of any discrepencies YOu may contact us 
 This repo is for minor project 1 odd sem 2020
 
 Dependencies required :
